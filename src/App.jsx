@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 //import Profile from "./components/Profile"
 //import MyForm from "./components/MyForm";
 //import Login from "./components/Login";
@@ -63,17 +63,28 @@ function App() {
   //   </>
   // )
 
-  async function getBlogPost() {
-    const [datas,SetDatas] = useState("");
-    const _res = await axios.get("https://jsonplaceholder.typicode.com/posts/1");
-    console.log(_res.data);
-  }
+  const [data,setData] = useState("");
+  
+
+  useEffect(() => {
+    async function getBlogPost() {
+      const _res = await axios.get("https://jsonplaceholder.typicode.com/posts/1");
+      setData(_res.data);
+      console.log(_res.data);
+    }
+
+    getBlogPost();
+    
+  }, [])
+  
+  
 
 
-  getBlogPost();
+  
   return(
     <>
-      <h1>axios</h1>
+      <h1>{data.title}</h1>
+      <p>{data.body}</p>
     </>
   )
 }
