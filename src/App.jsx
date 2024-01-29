@@ -76,10 +76,17 @@ function App() {
 
     //getBlogPost();
 
+
     async function getData(){
-      const _res = await getBlogPost();
-      setData(_res.data);
-      console.log(_res.data);
+
+      try {
+        const _res = await getBlogPost();
+        setData(_res.data);
+        console.log(_res.data);
+      } catch (error) {
+          console.log(error.message);
+      }
+      
     }
     getData();
   }, [])
