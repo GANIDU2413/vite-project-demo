@@ -65,6 +65,7 @@ function App() {
   // )
 
   const [data,setData] = useState("");
+  const [error,setError] = useState("");
   
 
   useEffect(() => {
@@ -76,7 +77,6 @@ function App() {
 
     //getBlogPost();
 
-
     async function getData(){
 
       try {
@@ -84,6 +84,7 @@ function App() {
         setData(_res.data);
         console.log(_res.data);
       } catch (error) {
+        setError(error.message);
           console.log(error.message);
       }
       
@@ -98,6 +99,7 @@ function App() {
   return(
     <>
       <h1>{data.title}</h1>
+      <h2>{error}</h2>
       <p>{data.body}</p>
     </>
   )
