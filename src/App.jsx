@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { getBlogPost } from "./pages/api";
+import { createBlogPost} from "./pages/api";
 //import Profile from "./components/Profile"
 //import MyForm from "./components/MyForm";
 //import Login from "./components/Login";
@@ -64,11 +64,11 @@ function App() {
   //   </>
   // )
 
-  const [data,setData] = useState("");
-  const [error,setError] = useState("");
+  // const [data,setData] = useState("");
+  // const [error,setError] = useState("");
   
 
-  useEffect(() => {
+  // useEffect(() => {
     // async function getBlogPost() {
     //   const _res = await axios.get("https://jsonplaceholder.typicode.com/posts/1");
     //   setData(_res.data);
@@ -77,32 +77,45 @@ function App() {
 
     //getBlogPost();
 
-    async function getData(){
+  //   async function getData(){
 
-      try {
-        const _res = await getBlogPost();
-        setData(_res.data);
-        console.log(_res.data);
-      } catch (error) {
-        setError(error.message);
-          console.log(error.message);
-      }
+  //     try {
+  //       const _res = await getBlogPost();
+  //       setData(_res.data);
+  //       console.log(_res.data);
+  //     } catch (error) {
+  //       setError(error.message);
+  //         console.log(error.message);
+  //     }
       
+  //   }
+  //   getData();
+  // }, [])
+  
+  
+  // return(
+  //   <>
+  //     <h1>{data.title}</h1>
+  //     <h2>{error}</h2>
+  //     <p>{data.body}</p>
+  //   </>
+  // )
+
+  async function handleCreatePost() {
+    try {
+    const _res=await createBlogPost();
+      
+    } catch (error) {
+      console.log(error);
     }
-    getData();
-  }, [])
-  
-  
-
-
-  
+    console.log(_res);
+  }
   return(
     <>
-      <h1>{data.title}</h1>
-      <h2>{error}</h2>
-      <p>{data.body}</p>
+      <h1>Create Blog Post</h1>
+      <button onClick={handleCreatePost}>Create Post</button>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
