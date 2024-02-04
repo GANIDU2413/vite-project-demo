@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { createBlogPost} from "./pages/api";
+import NavBar from "./components/NavBar";
 //import Profile from "./components/Profile"
 //import MyForm from "./components/MyForm";
 //import Login from "./components/Login";
@@ -50,7 +51,7 @@ function App() {
 //   )
 
 
-//react route 
+// react route 
   // return(
   //   <>
   //     <BrowserRouter>
@@ -100,31 +101,35 @@ function App() {
   //     <p>{data.body}</p>
   //   </>
   // )
-  const [success,setSuccess] = useState("");
-  const [error,setError] = useState("");
-  const [loading,setLoading] = useState(false);
+  // const [success,setSuccess] = useState("");
+  // const [error,setError] = useState("");
+  // const [loading,setLoading] = useState(false);
 
-  async function handleCreatePost() {
-    try {
-        setLoading(true);
-        const _res=await createBlogPost();
-        setLoading(false);
-        setSuccess("successfully created!");
-        console.log(_res);
+  // async function handleCreatePost() {
+  //   try {
+  //       setLoading(true);
+  //       const _res=await createBlogPost();
+  //       setLoading(false);
+  //       setSuccess("successfully created!");
+  //       console.log(_res);
       
-    } catch (error) {
-        setError(error.message);
-        console.log(error.message);
-    }
-  }
-  return(
-    <>
-      <h1>Create Blog Post</h1>
-      <p style={{color:'red'}}>{error}</p>
-      <p style={{color:'green'}}>{loading?"Loading...":success}</p>
-      <button onClick={handleCreatePost}>Create Post</button>
-    </>
-  );
+  //   } catch (error) {
+  //       setError(error.message);
+  //       console.log(error.message);
+  //   }
+  // }
+  // return(
+  //   <>
+  //     <h1>Create Blog Post</h1>
+  //     <p style={{color:'red'}}>{error}</p>
+  //     <p style={{color:'green'}}>{loading?"Loading...":success}</p>
+  //     <button onClick={handleCreatePost}>Create Post</button>
+  //   </>
+  // );
+
+  // x
+
+
 }
 
 export default App;
