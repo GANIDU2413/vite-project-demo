@@ -11,3 +11,8 @@ export async function createBlogPost(){
     );
     return _res;
 }
+
+export async function deleteBlogPost(){
+    const _res = await axios.delete('https://jsonplaceholder.typicode.com/posts/1');
+    return _res;
+}

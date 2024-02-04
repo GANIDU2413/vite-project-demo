@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { createBlogPost} from "./pages/api";
 //import Profile from "./components/Profile"
 //import MyForm from "./components/MyForm";
@@ -100,19 +100,28 @@ function App() {
   //     <p>{data.body}</p>
   //   </>
   // )
+  const [success,setSuccess] = useState("");
+  const [error,setError] = useState("");
+  const [loading,setLoading] = useState(false);
 
   async function handleCreatePost() {
     try {
-    const _res=await createBlogPost();
+        setLoading(true);
+        const _res=await createBlogPost();
+        setLoading(false);
+        setSuccess("successfully created!");
+        console.log(_res);
       
     } catch (error) {
-      console.log(error);
+        setError(error.message);
+        console.log(error.message);
     }
-    console.log(_res);
   }
   return(
     <>
       <h1>Create Blog Post</h1>
+      <p style={{color:'red'}}>{error}</p>
+      <p style={{color:'green'}}>{loading?"Loading...":success}</p>
       <button onClick={handleCreatePost}>Create Post</button>
     </>
   );
